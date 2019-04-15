@@ -33,6 +33,7 @@
 					<systemPropertyVariables>
 						<default.browser>CHROME</default.browser>
 					</systemPropertyVariables>
+					<suiteXmlFiles>src/test/resources/testng.xml</suiteXmlFiles>
 				</configuration>
 				<executions>
 					<execution>
