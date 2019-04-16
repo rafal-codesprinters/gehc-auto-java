@@ -1,16 +1,12 @@
-package dayone;
+package poptests;
 
-import driverfactory.DriverFactory;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageobjects.GoogleMainPage;
 import pageobjects.GoogleResultsPage;
 
-public class DayOneTests extends BaseTest {
+public class GoogleTests extends BaseTest {
 
     @Test
     public void googlePopTest() {

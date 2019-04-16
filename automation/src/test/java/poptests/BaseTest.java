@@ -1,4 +1,4 @@
-package dayone;
+package poptests;
 
 import driverfactory.DriverFactory;
 import org.openqa.selenium.WebDriver;

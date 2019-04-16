@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class GoogleMainPage extends GooglePage {
+public class GoogleMainPage extends GenericPage {
     public static final String GOOGLE_MAIN_PAGE_URL = "http://www.google.com";
     public static final By LOC_SEARCH_BOX = By.cssSelector(".gLFyf.gsfi");
 

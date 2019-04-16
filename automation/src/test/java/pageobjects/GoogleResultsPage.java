@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.stream.Collectors;
 
-public class GoogleResultsPage extends GooglePage {
+public class GoogleResultsPage extends GenericPage {
 
 
     public static final By LOC_SEARCH_RESULTS = By.id("search");

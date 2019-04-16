@@ -3,7 +3,7 @@
 <suite name="TestSuite" verbose="5" parallel="classes" thread-count="2">
 	<test name="search tests" parallel="methods" thread-count="5">
 		<classes>
-			<class name="dayone.DayOneTests"></class>
+			<class name="poptests.GoogleTests"></class>
 		</classes>
 	</test>
 </suite>
