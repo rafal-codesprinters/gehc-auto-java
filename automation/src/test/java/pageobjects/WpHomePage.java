@@ -23,4 +23,5 @@ public class WpHomePage extends GenericPage {
 
         return new WpNotePage(driver);
     }
+
 }
