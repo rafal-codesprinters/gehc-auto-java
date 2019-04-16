@@ -18,10 +18,10 @@ public class WordpressTests extends BaseTest {
 
         // act
         WpNotePage notePage = openFirstNote();
-        WpNotePage notePageWithComment = notePage.addComment(visitor.getNAME(), visitor.getEMAIL(), comment);
+        WpNotePage notePageWithComment = notePage.addComment(visitor.getName(), visitor.getEmail(), comment);
 
         // assert
-        Assert.assertTrue(notePageWithComment.hasComment(visitor.getNAME(), comment));
+        Assert.assertTrue(notePageWithComment.hasComment(visitor.getName(), comment));
     }
 
     @Test
@@ -34,10 +34,10 @@ public class WordpressTests extends BaseTest {
 
         WpNotePage notePage = openFirstNote();
         WpNotePage notePageWithComment = notePage
-                .addComment(commentAuthor.getNAME(), commentAuthor.getEMAIL(), comment);
+                .addComment(commentAuthor.getName(), commentAuthor.getEmail(), comment);
 
         WpNotePage noteWithReply = notePageWithComment
-                .addReplyToComment(comment, replyAuthor.getNAME(), replyAuthor.getEMAIL(), reply);
+                .addReplyToComment(comment, replyAuthor.getName(), replyAuthor.getEmail(), reply);
 
         Assert.assertTrue((noteWithReply.commentReplyExists(comment, reply)));
     }

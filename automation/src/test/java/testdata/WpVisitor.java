@@ -3,27 +3,27 @@ package testdata;
 import java.util.UUID;
 
 public class WpVisitor {
-    private String NAME;
-    private String EMAIL;
+    private String name;
+    private String email;
 
     public WpVisitor() {
-        this.NAME = UUID.randomUUID().toString();
-        this.EMAIL = this.NAME + "@test.domain.com";
+        this.name = UUID.randomUUID().toString();
+        this.email = this.name + "@test.domain.com";
     }
 
-    public String getNAME() {
-        return NAME;
+    public String getName() {
+        return name;
     }
 
-    public void setNAME(String NAME) {
-        this.NAME = NAME;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEMAIL() {
-        return EMAIL;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEMAIL(String EMAIL) {
-        this.EMAIL = EMAIL;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

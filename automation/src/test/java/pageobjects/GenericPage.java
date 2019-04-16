@@ -13,13 +13,13 @@ public class GenericPage {
         driver = webDriver;
     }
 
-    protected void waitForElementPresence(By selector) {
+    protected WebElement waitForElementPresence(By selector) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(selector));
+        return wait.until(ExpectedConditions.presenceOfElementLocated(selector));
     }
 
     protected void waitForElementNotPresent(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.invisibilityOf(element));
+        wait.until(ExpectedConditions.stalenessOf(element));
     }
 }

@@ -1,10 +1,9 @@
 package pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.util.stream.Collector;
 
 public class WpNotePage extends GenericPage {
 
@@ -16,7 +15,9 @@ public class WpNotePage extends GenericPage {
     private static final By LOC_TOP_LEVEL_COMMENT_BLOCK = By.cssSelector("li.comment.depth-1");
     private static final By LOC_COMMENT_AUTHOR = By.cssSelector(".comment-meta .fn");
     private static final By LOC_COMMENT_TEXT = By.cssSelector(".comment-content p");
-    public static final By LOC_COMMENT_REPLY_LINK = By.cssSelector(".comment-reply-link");
+    private static final By LOC_COMMENT_REPLY_LINK = By.cssSelector(".comment-reply-link");
+    private static final By LOC_CANCEL_REPLY_LINK = By.id("cancel-comment-reply-link");
+    private static final By LOC_REPLY_BLOCK = By.cssSelector("li.comment.depth-2");
 
     WpNotePage(WebDriver webDriver) {
         super(webDriver);
@@ -43,6 +44,8 @@ public class WpNotePage extends GenericPage {
 
         WebElement submitCommentButton = driver.findElement(LOC_SUBMIT_COMMENT_BUTTON);
         submitCommentButton.click();
+
+        waitForElementNotPresent(submitCommentButton);
     }
 
     public boolean hasComment(String author, String comment) {
@@ -54,27 +57,27 @@ public class WpNotePage extends GenericPage {
 
     public WpNotePage addReplyToComment(String comment, String name, String email, String reply) {
 
-        WebElement commentBlock = driver.findElements(LOC_TOP_LEVEL_COMMENT_BLOCK).stream()
-                .filter(el -> el.findElement(LOC_COMMENT_TEXT).getText().equals((comment)))
-                .findFirst()
-                .get();
-
-        waitForElementPresence(LOC_COMMENT_REPLY_LINK);
-
+        WebElement commentBlock = firstTopLevelCommentByContent(comment);
         commentBlock.findElement(LOC_COMMENT_REPLY_LINK).click();
-        createCommentOrReply(name, email, reply);
 
-        //waitForElementNotPresent(driver.findElement(By.id("cancel-comment-reply-link")));
+        waitForElementPresence(LOC_CANCEL_REPLY_LINK);
+        createCommentOrReply(name, email, reply);
 
         return new WpNotePage(driver);
     }
 
-    public boolean commentReplyExists(String comment, String reply) {
-        WebElement replyBlock = driver.findElements(LOC_TOP_LEVEL_COMMENT_BLOCK).stream()
-                .filter(cmt -> cmt.findElement(LOC_COMMENT_TEXT).getText().equals(comment))
-                .findFirst().get();
+    private WebElement firstTopLevelCommentByContent(String comment) {
+        return driver.findElements(LOC_TOP_LEVEL_COMMENT_BLOCK).stream()
+                .filter(el -> el.findElement(LOC_COMMENT_TEXT).getText().equals((comment)))
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("Unable to locate element: "
+                        + LOC_COMMENT_TEXT.toString()));
+    }
 
-        return replyBlock.findElements(By.cssSelector("li.comment.depth-2")).stream()
+    public boolean commentReplyExists(String comment, String reply) {
+        WebElement commentAndReplyBlock = firstTopLevelCommentByContent(comment);
+
+        return commentAndReplyBlock.findElements(LOC_REPLY_BLOCK).stream()
                 .anyMatch(rpl -> rpl.findElement(LOC_COMMENT_TEXT).getText().equals(reply));
 
     }
