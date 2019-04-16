@@ -1,5 +1,6 @@
 package driverfactory;
 
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,8 +8,10 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -19,6 +22,11 @@ import static driverfactory.Browser.*;
 
 public abstract class DriverFactory {
     public static WebDriver getDriver() {
+
+        Proxy proxy = new Proxy();
+        proxy.setProxyType(Proxy.ProxyType.MANUAL);
+        proxy.setHttpProxy("proxy.net:3337");
+        proxy.setSslProxy("proxy.net:3337");
 
         if (System.getProperty("grid.address") != null && System.getProperty("grid.port") !=null) {
             URL gridUrl = null;
@@ -49,10 +57,14 @@ public abstract class DriverFactory {
                 .toUpperCase()))) {
             case CHROME :
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless");
+                /*chromeOptions.setCapability(CapabilityType.PROXY, proxy);
+                chromeOptions.addArguments("--headless");*/
                 return new ChromeDriver(chromeOptions);
             case FIREFOX :
-                return new FirefoxDriver();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                /*firefoxOptions.setCapability(CapabilityType.PROXY, proxy);
+                firefoxOptions.addArguments("-headless");*/
+                return new FirefoxDriver(firefoxOptions);
             case EDGE :
                 return new EdgeDriver();
             case MSIE :

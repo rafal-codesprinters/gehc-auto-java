@@ -10,14 +10,7 @@ import org.testng.annotations.Test;
 import pageobjects.GoogleMainPage;
 import pageobjects.GoogleResultsPage;
 
-public class DayOneTests {
-
-    final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
-
-    @BeforeMethod
-    public void setupDriver() {
-        driver.set(DriverFactory.getDriver());
-    }
+public class DayOneTests extends BaseTest {
 
     @Test
     public void googlePopTest() {
@@ -40,11 +33,6 @@ public class DayOneTests {
     public void csTest() {
         driver.get().get("http://agileszkolenia.pl");
         assert driver.get().findElements(By.id("mce-FNAME")).size() == 1;
-    }
-
-    @AfterMethod
-    public void quitDriver() {
-        driver.get().quit();
     }
 
 }
