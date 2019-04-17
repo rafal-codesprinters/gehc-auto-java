@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class WpNotePage extends GenericPage {
 
@@ -24,12 +25,18 @@ public class WpNotePage extends GenericPage {
         waitForElementPresence(LOC_SINGLE_POST_BODY);
     }
 
+    public static WpNotePage open(String noteUrl, WebDriver webDriver) {
+        webDriver.get(noteUrl);
+        return new WpNotePage(webDriver);
+    }
+
     public WpNotePage addComment(String author, String email, String comment) {
         createCommentOrReply(author, email, comment);
         return new WpNotePage(driver);
     }
 
     private void createCommentOrReply(String author, String email, String commentText) {
+
         WebElement commentBox = driver.findElement(LOC_COMMENT_BOX);
         commentBox.click();
         commentBox.sendKeys(commentText);
@@ -81,4 +88,10 @@ public class WpNotePage extends GenericPage {
                 .anyMatch(rpl -> rpl.findElement(LOC_COMMENT_TEXT).getText().equals(reply));
 
     }
+
+    public boolean noteContains(String title, String content) {
+        return driver.findElement(By.className("entry-title")).getText().equals(title)
+                && driver.findElement(By.className("entry-content")).getText().equals(content);
+    }
+
 }
