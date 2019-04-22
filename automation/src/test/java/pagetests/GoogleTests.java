@@ -1,10 +1,10 @@
-package poptests;
+package pagetests;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageobjects.GoogleMainPage;
-import pageobjects.GoogleResultsPage;
+import pageobjects.google.GoogleMainPage;
+import pageobjects.google.GoogleResultsPage;
 
 public class GoogleTests extends BaseTest {
 

@@ -1,4 +1,4 @@
-package poptests;
+package pagetests;
 
 import driverfactory.DriverFactory;
 import org.openqa.selenium.WebDriver;

@@ -1,12 +1,13 @@
-package pageobjects;
+package pageobjects.google;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import pageobjects.page.GenericPage;
 
 public class GoogleMainPage extends GenericPage {
-    public static final String GOOGLE_MAIN_PAGE_URL = "http://www.google.com";
-    public static final By LOC_SEARCH_BOX = By.cssSelector(".gLFyf.gsfi");
+    private static final String GOOGLE_MAIN_PAGE_URL = "http://www.google.com";
+    private static final By LOC_SEARCH_BOX = By.cssSelector(".gLFyf.gsfi");
 
     public GoogleMainPage(WebDriver webDriver) {
         super(webDriver);

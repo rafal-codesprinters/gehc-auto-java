@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-
-<suite name="TestSuite" verbose="5" parallel="methods" thread-count="2">
-	<test name="search tests" parallel="methods" thread-count="4">
-		<classes>
-			<class name="google.SearchTest"></class>
-		</classes>
-	</test>
-</suite>

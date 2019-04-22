@@ -1,4 +1,4 @@
-package pageobjects;
+package pageobjects.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,8 +16,13 @@ public class GenericPage {
     }
 
     protected WebElement waitForElementPresence(By selector) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        int timeOutInSeconds = 10;
+        WebDriverWait wait = foo(timeOutInSeconds);
         return wait.until(ExpectedConditions.presenceOfElementLocated(selector));
+    }
+
+    private WebDriverWait foo(int timeOutInSeconds) {
+        return new WebDriverWait(driver, timeOutInSeconds);
     }
 
     protected void waitForElementNotPresent(WebElement element) {
@@ -30,19 +35,9 @@ public class GenericPage {
         action.moveToElement(element).build().perform();
     }
 
-    protected void waitForElementClickable(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
     protected void waitForElementClickable(WebElement element) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(element));
-    }
-
-    protected void waitForElementVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
     protected void waitForElementVisible(WebElement element) {

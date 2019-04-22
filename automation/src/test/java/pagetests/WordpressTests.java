@@ -1,11 +1,11 @@
-package poptests;
+package pagetests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageobjects.WpAdminPage;
-import pageobjects.WpHomePage;
-import pageobjects.WpLoginPage;
-import pageobjects.WpNotePage;
+import pageobjects.wordpress.admin.WpAdminPage;
+import pageobjects.wordpress.blog.WpHomePage;
+import pageobjects.wordpress.blog.WpLoginPage;
+import pageobjects.wordpress.blog.WpNotePage;
 import testdata.WpVisitor;
 
 import java.util.UUID;
