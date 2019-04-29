@@ -14,10 +14,10 @@ public class GenericPage {
         driver = webDriver;
     }
 
-    protected WebElement waitForElementPresence(By selector) {
+    protected void waitForElementPresence(By selector) {
         int timeOutInSeconds = 10;
         WebDriverWait wait = foo(timeOutInSeconds);
-        return wait.until(ExpectedConditions.presenceOfElementLocated(selector));
+        wait.until(ExpectedConditions.presenceOfElementLocated(selector));
     }
 
     private WebDriverWait foo(int timeOutInSeconds) {
