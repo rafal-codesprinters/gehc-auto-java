@@ -66,7 +66,7 @@ public class WordpressTests extends BaseTest {
         newNoteEditor.createNote(noteTitle, noteContent);
         String noteUrl = newNoteEditor.publishNote();
 
-        WordPressLoginPage loggedOutPage = adminPage.logout();
+        adminPage.logout();
 
         WordPressNotePage notePage = WordPressNotePage.open(noteUrl, getDriver());
         Assert.assertTrue(notePage.noteContains(noteTitle, noteContent));

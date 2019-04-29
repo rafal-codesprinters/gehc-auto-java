@@ -9,9 +9,7 @@ import pageobjects.page.GenericPage;
 import wordpress.pageobjects.blog.WordPressLoginPage;
 
 public class WordPressAdminPage extends GenericPage {
-
     private static final By LOC_ADMIN_PAGE_BODY = By.cssSelector("body.wp-admin");
-    private static final By LOC_SUBMENU_ITEM = By.cssSelector("li a");
 
     // Elements created by Page Factory for new post menu and submenus
     @FindBy (css = ".post-new-php") private WebElement newPostEditor;
@@ -48,7 +46,7 @@ public class WordPressAdminPage extends GenericPage {
         return new WordPressAdminPage(driver);
     }
 
-    public WordPressAdminPage createNote(String title, String content) {
+    public void createNote(String title, String content) {
         newNoteTitle.click();
         newNoteTitle.sendKeys(title);
 
@@ -58,7 +56,7 @@ public class WordPressAdminPage extends GenericPage {
         newNoteContent.sendKeys(content);
 
         waitForElementClickable(permalinkEditButton);
-        return new WordPressAdminPage(driver);
+        new WordPressAdminPage(driver);
     }
 
     public String publishNote() {
