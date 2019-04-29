@@ -6,8 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobjects.page.GenericPage;
 
-import java.util.stream.Collectors;
-
 public class GoogleResultsPage extends GenericPage {
     private static final By LOC_SEARCH_RESULTS = By.id("search");
     private static final By LOC_RESULT_ANCHOR = By.cssSelector(".r > a");
@@ -20,8 +18,6 @@ public class GoogleResultsPage extends GenericPage {
     public Boolean hasResults(String resultUrl) {
         return driver.findElements(By.className("rc"))
                 .stream()
-                .filter(res -> res.findElement(LOC_RESULT_ANCHOR).getAttribute("href").equals(resultUrl))
-                .collect(Collectors.toList())
-                .size() > 0;
+                .anyMatch(res -> res.findElement(LOC_RESULT_ANCHOR).getAttribute("href").equals(resultUrl));
     }
 }
