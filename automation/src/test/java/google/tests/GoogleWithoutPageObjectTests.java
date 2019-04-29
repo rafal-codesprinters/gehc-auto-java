@@ -3,20 +3,9 @@ package google.tests;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import google.pageobjects.GoogleMainPage;
-import google.pageobjects.GoogleResultsPage;
 import pagetests.BaseTest;
 
-public class GoogleTests extends BaseTest {
-    @Test
-    public void googlePopTest() {
-        GoogleMainPage mainPage = new GoogleMainPage(getDriver());
-
-        GoogleResultsPage resultsPage = mainPage.searchFor("codesprinters");
-
-        Assert.assertTrue(resultsPage.hasResults("http://agileszkolenia.pl/"));
-    }
-
+public class GoogleWithoutPageObjectTests extends BaseTest {
     @Test
     public void googleTest() {
         getDriver().navigate().to("http://google.com");

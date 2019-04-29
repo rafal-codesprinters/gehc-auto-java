@@ -3,7 +3,9 @@
 <suite name="TestSuite" verbose="5" parallel="classes" thread-count="2">
 	<test name="search tests" parallel="methods" thread-count="5">
 		<classes>
-			<class name="google.tests.GoogleTests"></class>
+			<class name="google.tests.GoogleWithoutPageObjectTests"></class>
+			<class name="google.tests.GoogleWithPageObjectTests"></class>
+			<class name="pagetests.WordpressTests"></class>
 		</classes>
 	</test>
 </suite>
