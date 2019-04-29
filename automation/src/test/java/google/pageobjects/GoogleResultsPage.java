@@ -15,7 +15,7 @@ public class GoogleResultsPage extends GenericPage {
         new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(LOC_SEARCH_RESULTS));
     }
 
-    public Boolean hasResults(String resultUrl) {
+    public boolean hasResults(String resultUrl) {
         return driver.findElements(By.className("rc"))
                 .stream()
                 .anyMatch(res -> res.findElement(LOC_RESULT_ANCHOR).getAttribute("href").equals(resultUrl));
