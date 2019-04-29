@@ -9,10 +9,8 @@ import pageobjects.page.GenericPage;
 import java.util.stream.Collectors;
 
 public class GoogleResultsPage extends GenericPage {
-
-
-    public static final By LOC_SEARCH_RESULTS = By.id("search");
-    public static final By LOC_RESULT_ANCHOR = By.cssSelector(".r > a");
+    private static final By LOC_SEARCH_RESULTS = By.id("search");
+    private static final By LOC_RESULT_ANCHOR = By.cssSelector(".r > a");
 
     GoogleResultsPage(WebDriver webDriver) {
         super(webDriver);
