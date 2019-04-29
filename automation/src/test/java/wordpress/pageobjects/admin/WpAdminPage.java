@@ -1,4 +1,4 @@
-package pageobjects.wordpress.admin;
+package wordpress.pageobjects.admin;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pageobjects.page.GenericPage;
-import pageobjects.wordpress.blog.WpLoginPage;
+import wordpress.pageobjects.blog.WpLoginPage;
 
 public class WpAdminPage extends GenericPage {
 

@@ -1,10 +1,11 @@
-package pagetests;
+package wordpress.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-import pageobjects.wordpress.blog.WpLoginPage;
+import pagetests.BaseTest;
+import wordpress.pageobjects.blog.WpLoginPage;
 
 import java.util.UUID;
 

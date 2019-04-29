@@ -1,4 +1,4 @@
-package testdata;
+package wordpress.domain;
 
 import java.util.UUID;
 

@@ -5,7 +5,7 @@
 		<classes>
 			<class name="google.tests.GoogleWithoutPageObjectTests"></class>
 			<class name="google.tests.GoogleWithPageObjectTests"></class>
-			<class name="pagetests.WordpressTests"></class>
+			<class name="wordpress.tests.WordpressTests"></class>
 		</classes>
 	</test>
 </suite>

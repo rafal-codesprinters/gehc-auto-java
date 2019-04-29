@@ -1,12 +1,13 @@
-package pagetests;
+package wordpress.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageobjects.wordpress.admin.WpAdminPage;
-import pageobjects.wordpress.blog.WpHomePage;
-import pageobjects.wordpress.blog.WpLoginPage;
-import pageobjects.wordpress.blog.WpNotePage;
-import testdata.WpVisitor;
+import wordpress.pageobjects.admin.WpAdminPage;
+import wordpress.pageobjects.blog.WpHomePage;
+import wordpress.pageobjects.blog.WpLoginPage;
+import wordpress.pageobjects.blog.WpNotePage;
+import pagetests.BaseTest;
+import wordpress.domain.WpVisitor;
 
 import java.util.UUID;
 
