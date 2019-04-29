@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pageobjects.page.GenericPage;
-import wordpress.pageobjects.admin.WpAdminPage;
+import wordpress.pageobjects.admin.WordPressAdminPage;
 
-public class WpLoginPage extends GenericPage {
+public class WordPressLoginPage extends GenericPage {
 
     private static final String WP_ADMIN_URL = "http://automation.markowicz.pro/wp-admin/";
     private static final By LOC_LOGIN_PAGE_BODY = By.cssSelector("body.login");
@@ -18,14 +18,14 @@ public class WpLoginPage extends GenericPage {
     @FindBy (id = "user_pass") private WebElement passwordBox;
     @FindBy (id = "wp-submit") private WebElement submitButton;
 
-    public WpLoginPage(WebDriver driver) {
+    public WordPressLoginPage(WebDriver driver) {
         super(driver);
         driver.get(WP_ADMIN_URL);
         PageFactory.initElements(driver, this);
         waitForElementPresence(LOC_ADMIN_FORM);
     }
 
-    public WpAdminPage login(String user, String password) {
+    public WordPressAdminPage login(String user, String password) {
         userBox.click();
         userBox.sendKeys(user);
 
@@ -34,7 +34,7 @@ public class WpLoginPage extends GenericPage {
 
         submitButton.click();
 
-        return new WpAdminPage(driver);
+        return new WordPressAdminPage(driver);
     }
 
     public boolean isUserLoggedOut() {

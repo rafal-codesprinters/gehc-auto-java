@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pageobjects.page.GenericPage;
-import wordpress.pageobjects.blog.WpLoginPage;
+import wordpress.pageobjects.blog.WordPressLoginPage;
 
-public class WpAdminPage extends GenericPage {
+public class WordPressAdminPage extends GenericPage {
 
     private static final By LOC_ADMIN_PAGE_BODY = By.cssSelector("body.wp-admin");
     private static final By LOC_SUBMENU_ITEM = By.cssSelector("li a");
@@ -32,23 +32,23 @@ public class WpAdminPage extends GenericPage {
     @FindBy (id = "wp-admin-bar-logout") private WebElement logoutLink;
     @FindBy (id = "wp-admin-bar-new-post") private  WebElement addNewPostLink;
 
-    public WpAdminPage(WebDriver driver) {
+    public WordPressAdminPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
         waitForElementPresence(LOC_ADMIN_PAGE_BODY);
     }
 
-    public WpAdminPage openNewNoteEditor() {
+    public WordPressAdminPage openNewNoteEditor() {
         hoverOverElement(menuNotes);
         waitForElementVisible(addNewPostLink);
 
         addNewPostLink.click();
 
         waitForElementVisible(newPostEditor);
-        return new WpAdminPage(driver);
+        return new WordPressAdminPage(driver);
     }
 
-    public WpAdminPage createNote(String title, String content) {
+    public WordPressAdminPage createNote(String title, String content) {
         newNoteTitle.click();
         newNoteTitle.sendKeys(title);
 
@@ -58,7 +58,7 @@ public class WpAdminPage extends GenericPage {
         newNoteContent.sendKeys(content);
 
         waitForElementClickable(permalinkEditButton);
-        return new WpAdminPage(driver);
+        return new WordPressAdminPage(driver);
     }
 
     public String publishNote() {
@@ -68,11 +68,11 @@ public class WpAdminPage extends GenericPage {
         return permalink.findElement(By.tagName("a")).getAttribute("href");
     }
 
-    public WpLoginPage logout() {
+    public WordPressLoginPage logout() {
         hoverOverElement(userAdminLink);
         waitForElementVisible(userActionsMenu);
         logoutLink.click();
-        return new WpLoginPage(driver);
+        return new WordPressLoginPage(driver);
     }
 
     public boolean isUserLoggedIn() {

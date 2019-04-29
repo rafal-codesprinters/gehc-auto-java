@@ -2,39 +2,39 @@ package wordpress.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import wordpress.pageobjects.admin.WpAdminPage;
-import wordpress.pageobjects.blog.WpHomePage;
-import wordpress.pageobjects.blog.WpLoginPage;
-import wordpress.pageobjects.blog.WpNotePage;
+import wordpress.pageobjects.admin.WordPressAdminPage;
+import wordpress.pageobjects.blog.WordPressHomePage;
+import wordpress.pageobjects.blog.WordPressLoginPage;
+import wordpress.pageobjects.blog.WordPressNotePage;
 import pagetests.BaseTest;
-import wordpress.domain.WpVisitor;
+import wordpress.domain.WordPressVisitor;
 
 import java.util.UUID;
 
 public class WordpressTests extends BaseTest {
     @Test
     public void canAddCommentToNote() {
-        WpVisitor visitor = new WpVisitor();
+        WordPressVisitor visitor = new WordPressVisitor();
         String comment = UUID.randomUUID().toString();
 
-        WpNotePage notePage = openFirstNote();
-        WpNotePage notePageWithComment = notePage.addComment(visitor.getName(), visitor.getEmail(), comment);
+        WordPressNotePage notePage = openFirstNote();
+        WordPressNotePage notePageWithComment = notePage.addComment(visitor.getName(), visitor.getEmail(), comment);
 
         Assert.assertTrue(notePageWithComment.hasComment(visitor.getName(), comment));
     }
 
     @Test
     public void canAddReplyToComment() {
-        WpVisitor commentAuthor = new WpVisitor();
-        WpVisitor replyAuthor = new WpVisitor();
+        WordPressVisitor commentAuthor = new WordPressVisitor();
+        WordPressVisitor replyAuthor = new WordPressVisitor();
         String comment = UUID.randomUUID().toString();
         String reply = UUID.randomUUID().toString();
 
-        WpNotePage notePage = openFirstNote();
-        WpNotePage notePageWithComment = notePage
+        WordPressNotePage notePage = openFirstNote();
+        WordPressNotePage notePageWithComment = notePage
                 .addComment(commentAuthor.getName(), commentAuthor.getEmail(), comment);
 
-        WpNotePage noteWithReply = notePageWithComment
+        WordPressNotePage noteWithReply = notePageWithComment
                 .addReplyToComment(comment, replyAuthor.getName(), replyAuthor.getEmail(), reply);
 
         Assert.assertTrue((noteWithReply.commentReplyExists(comment, reply)));
@@ -45,11 +45,11 @@ public class WordpressTests extends BaseTest {
         String user = "jan-automatyczny";
         String password = "Cod@Sprint3rs2019";
 
-        WpLoginPage loginPage = new WpLoginPage(getDriver());
-        WpAdminPage adminPage = loginPage.login(user, password);
+        WordPressLoginPage loginPage = new WordPressLoginPage(getDriver());
+        WordPressAdminPage adminPage = loginPage.login(user, password);
         Assert.assertTrue(adminPage.isUserLoggedIn());
 
-        WpLoginPage loggedOutPage = adminPage.logout();
+        WordPressLoginPage loggedOutPage = adminPage.logout();
         Assert.assertTrue(loggedOutPage.isUserLoggedOut());
     }
 
@@ -60,20 +60,20 @@ public class WordpressTests extends BaseTest {
         String noteTitle = UUID.randomUUID().toString();
         String noteContent = UUID.randomUUID().toString();
 
-        WpLoginPage loginPage = new WpLoginPage(getDriver());
-        WpAdminPage adminPage = loginPage.login(user, password);
-        WpAdminPage newNoteEditor = adminPage.openNewNoteEditor();
+        WordPressLoginPage loginPage = new WordPressLoginPage(getDriver());
+        WordPressAdminPage adminPage = loginPage.login(user, password);
+        WordPressAdminPage newNoteEditor = adminPage.openNewNoteEditor();
         newNoteEditor.createNote(noteTitle, noteContent);
         String noteUrl = newNoteEditor.publishNote();
 
-        WpLoginPage loggedOutPage = adminPage.logout();
+        WordPressLoginPage loggedOutPage = adminPage.logout();
 
-        WpNotePage notePage = WpNotePage.open(noteUrl, getDriver());
+        WordPressNotePage notePage = WordPressNotePage.open(noteUrl, getDriver());
         Assert.assertTrue(notePage.noteContains(noteTitle, noteContent));
     }
 
-    private WpNotePage openFirstNote() {
-        WpHomePage homePage = new WpHomePage(getDriver());
+    private WordPressNotePage openFirstNote() {
+        WordPressHomePage homePage = new WordPressHomePage(getDriver());
         return homePage.openFirstNote();
     }
 }

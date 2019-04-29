@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import pagetests.BaseTest;
-import wordpress.pageobjects.blog.WpLoginPage;
+import wordpress.pageobjects.blog.WordPressLoginPage;
 
 import java.util.UUID;
 
@@ -17,7 +17,7 @@ public class SandboxTests extends BaseTest {
         String user = "jan-automatyczny";
         String password = "Cod@Sprint3rs2019";
 
-        WpLoginPage loginPage = new WpLoginPage(getDriver());
+        WordPressLoginPage loginPage = new WordPressLoginPage(getDriver());
         loginPage.login(user, password);
 
         getDriver().get("http://www.automation.markowicz.pro/wp-admin/post-new.php");

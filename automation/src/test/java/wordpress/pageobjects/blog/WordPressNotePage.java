@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageobjects.page.GenericPage;
 
-public class WpNotePage extends GenericPage {
+public class WordPressNotePage extends GenericPage {
 
     private static final By LOC_SINGLE_POST_BODY = By.cssSelector("body.single-post");
     private static final By LOC_COMMENT_BOX = By.id("comment");
@@ -20,19 +20,19 @@ public class WpNotePage extends GenericPage {
     private static final By LOC_CANCEL_REPLY_LINK = By.id("cancel-comment-reply-link");
     private static final By LOC_REPLY_BLOCK = By.cssSelector("li.comment.depth-2");
 
-    WpNotePage(WebDriver webDriver) {
+    WordPressNotePage(WebDriver webDriver) {
         super(webDriver);
         waitForElementPresence(LOC_SINGLE_POST_BODY);
     }
 
-    public static WpNotePage open(String noteUrl, WebDriver webDriver) {
+    public static WordPressNotePage open(String noteUrl, WebDriver webDriver) {
         webDriver.get(noteUrl);
-        return new WpNotePage(webDriver);
+        return new WordPressNotePage(webDriver);
     }
 
-    public WpNotePage addComment(String author, String email, String comment) {
+    public WordPressNotePage addComment(String author, String email, String comment) {
         createCommentOrReply(author, email, comment);
-        return new WpNotePage(driver);
+        return new WordPressNotePage(driver);
     }
 
     private void createCommentOrReply(String author, String email, String commentText) {
@@ -62,7 +62,7 @@ public class WpNotePage extends GenericPage {
 
     }
 
-    public WpNotePage addReplyToComment(String comment, String name, String email, String reply) {
+    public WordPressNotePage addReplyToComment(String comment, String name, String email, String reply) {
 
         WebElement commentBlock = firstTopLevelCommentByContent(comment);
         commentBlock.findElement(LOC_COMMENT_REPLY_LINK).click();
@@ -70,7 +70,7 @@ public class WpNotePage extends GenericPage {
         waitForElementPresence(LOC_CANCEL_REPLY_LINK);
         createCommentOrReply(name, email, reply);
 
-        return new WpNotePage(driver);
+        return new WordPressNotePage(driver);
     }
 
     private WebElement firstTopLevelCommentByContent(String comment) {
