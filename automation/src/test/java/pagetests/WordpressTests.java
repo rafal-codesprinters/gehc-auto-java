@@ -11,24 +11,19 @@ import testdata.WpVisitor;
 import java.util.UUID;
 
 public class WordpressTests extends BaseTest {
-
     @Test
     public void canAddCommentToNote() {
-        // arrange
         WpVisitor visitor = new WpVisitor();
         String comment = UUID.randomUUID().toString();
 
-        // act
         WpNotePage notePage = openFirstNote();
         WpNotePage notePageWithComment = notePage.addComment(visitor.getName(), visitor.getEmail(), comment);
 
-        // assert
         Assert.assertTrue(notePageWithComment.hasComment(visitor.getName(), comment));
     }
 
     @Test
     public void canAddReplyToComment() {
-
         WpVisitor commentAuthor = new WpVisitor();
         WpVisitor replyAuthor = new WpVisitor();
         String comment = UUID.randomUUID().toString();
