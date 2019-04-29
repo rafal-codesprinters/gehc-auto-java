@@ -1,4 +1,4 @@
-package driverfactory;
+package driver;
 
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
