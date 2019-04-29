@@ -1,10 +1,11 @@
-package pagetests;
+package google.tests;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageobjects.google.GoogleMainPage;
-import pageobjects.google.GoogleResultsPage;
+import google.pageobjects.GoogleMainPage;
+import google.pageobjects.GoogleResultsPage;
+import pagetests.BaseTest;
 
 public class GoogleTests extends BaseTest {
     @Test
