@@ -16,16 +16,16 @@ public class SandboxTests extends BaseTest {
         String user = "jan-automatyczny";
         String password = "Cod@Sprint3rs2019";
 
-        WpLoginPage loginPage = new WpLoginPage(driver.get());
+        WpLoginPage loginPage = new WpLoginPage(getDriver());
         loginPage.login(user, password);
 
-        driver.get().get("http://www.automation.markowicz.pro/wp-admin/post-new.php");
-        driver.get().findElement(By.id("content-tmce")).click();
+        getDriver().get("http://www.automation.markowicz.pro/wp-admin/post-new.php");
+        getDriver().findElement(By.id("content-tmce")).click();
 
-        WebDriverWait wait = new WebDriverWait(driver.get(), 10);
+        WebDriverWait wait = new WebDriverWait(getDriver(), 10);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(0));
 
-        driver.get().findElement(By.id("tinymce")).sendKeys(UUID.randomUUID().toString());
-        driver.get().switchTo().parentFrame();
+        getDriver().findElement(By.id("tinymce")).sendKeys(UUID.randomUUID().toString());
+        getDriver().switchTo().parentFrame();
     }
 }

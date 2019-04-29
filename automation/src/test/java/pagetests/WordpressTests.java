@@ -49,7 +49,7 @@ public class WordpressTests extends BaseTest {
         String user = "jan-automatyczny";
         String password = "Cod@Sprint3rs2019";
 
-        WpLoginPage loginPage = new WpLoginPage(driver.get());
+        WpLoginPage loginPage = new WpLoginPage(getDriver());
         WpAdminPage adminPage = loginPage.login(user, password);
         Assert.assertTrue(adminPage.isUserLoggedIn());
 
@@ -64,7 +64,7 @@ public class WordpressTests extends BaseTest {
         String noteTitle = UUID.randomUUID().toString();
         String noteContent = UUID.randomUUID().toString();
 
-        WpLoginPage loginPage = new WpLoginPage(driver.get());
+        WpLoginPage loginPage = new WpLoginPage(getDriver());
         WpAdminPage adminPage = loginPage.login(user, password);
         WpAdminPage newNoteEditor = adminPage.openNewNoteEditor();
         newNoteEditor.createNote(noteTitle, noteContent);
@@ -72,12 +72,12 @@ public class WordpressTests extends BaseTest {
 
         WpLoginPage loggedOutPage = adminPage.logout();
 
-        WpNotePage notePage = WpNotePage.open(noteUrl, driver.get());
+        WpNotePage notePage = WpNotePage.open(noteUrl, getDriver());
         Assert.assertTrue(notePage.noteContains(noteTitle, noteContent));
     }
 
     private WpNotePage openFirstNote() {
-        WpHomePage homePage = new WpHomePage(driver.get());
+        WpHomePage homePage = new WpHomePage(getDriver());
         return homePage.openFirstNote();
     }
 }

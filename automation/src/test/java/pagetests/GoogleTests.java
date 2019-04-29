@@ -11,7 +11,7 @@ public class GoogleTests extends BaseTest {
     @Test
     public void googlePopTest() {
         // arrange
-        GoogleMainPage mainPage = new GoogleMainPage(driver.get());
+        GoogleMainPage mainPage = new GoogleMainPage(getDriver());
         // act
         GoogleResultsPage resultsPage = mainPage.searchFor("codesprinters");
         // assert
@@ -21,14 +21,14 @@ public class GoogleTests extends BaseTest {
     @Test
     public void googleTest() {
 
-        driver.get().navigate().to("http://google.com");
-        assert driver.get().findElements(By.name("q")).size() == 1;
+        getDriver().navigate().to("http://google.com");
+        assert getDriver().findElements(By.name("q")).size() == 1;
     }
 
     @Test
     public void csTest() {
-        driver.get().get("http://agileszkolenia.pl");
-        assert driver.get().findElements(By.id("mce-FNAME")).size() == 1;
+        getDriver().get("http://agileszkolenia.pl");
+        assert getDriver().findElements(By.id("mce-FNAME")).size() == 1;
     }
 
 }
