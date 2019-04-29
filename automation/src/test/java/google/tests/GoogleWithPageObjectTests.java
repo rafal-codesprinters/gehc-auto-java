@@ -4,7 +4,7 @@ import google.pageobjects.GoogleMainPage;
 import google.pageobjects.GoogleResultsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pagetests.BaseTest;
+import webpage.testsuite.BaseTest;
 
 public class GoogleWithPageObjectTests extends BaseTest {
     @Test

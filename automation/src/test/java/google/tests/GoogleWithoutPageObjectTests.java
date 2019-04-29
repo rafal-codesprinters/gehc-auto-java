@@ -3,7 +3,7 @@ package google.tests;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pagetests.BaseTest;
+import webpage.testsuite.BaseTest;
 
 public class GoogleWithoutPageObjectTests extends BaseTest {
     @Test

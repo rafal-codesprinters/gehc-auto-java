@@ -6,7 +6,7 @@ import wordpress.pageobjects.admin.WordPressAdminPage;
 import wordpress.pageobjects.blog.WordPressHomePage;
 import wordpress.pageobjects.blog.WordPressLoginPage;
 import wordpress.pageobjects.blog.WordPressNotePage;
-import pagetests.BaseTest;
+import webpage.testsuite.BaseTest;
 import wordpress.domain.WordPressVisitor;
 
 import java.util.UUID;

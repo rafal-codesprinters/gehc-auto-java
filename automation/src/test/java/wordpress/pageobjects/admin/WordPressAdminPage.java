@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pageobjects.page.GenericPage;
+import webpage.pageobjects.GenericPage;
 import wordpress.pageobjects.blog.WordPressLoginPage;
 
 public class WordPressAdminPage extends GenericPage {

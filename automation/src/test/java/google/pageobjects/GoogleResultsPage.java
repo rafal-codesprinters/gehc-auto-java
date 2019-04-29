@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageobjects.page.GenericPage;
+import webpage.pageobjects.GenericPage;
 
 public class GoogleResultsPage extends GenericPage {
     private static final By LOC_SEARCH_RESULTS = By.id("search");

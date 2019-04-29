@@ -1,4 +1,4 @@
-package pagetests;
+package webpage.testsuite;
 
 import driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
