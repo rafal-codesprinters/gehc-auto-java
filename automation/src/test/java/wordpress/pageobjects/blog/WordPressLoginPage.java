@@ -12,7 +12,7 @@ public class WordPressLoginPage extends GenericPage {
 
     private static final String WP_ADMIN_URL = "http://automation.markowicz.pro/wp-admin/";
     private static final By LOC_LOGIN_PAGE_BODY = By.cssSelector("body.login");
-    public static final By LOC_ADMIN_FORM = By.id("loginform");
+    private static final By LOC_ADMIN_FORM = By.id("loginform");
 
     @FindBy(id = "user_login") private WebElement userBox;
     @FindBy (id = "user_pass") private WebElement passwordBox;

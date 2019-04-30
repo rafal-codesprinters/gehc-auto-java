@@ -24,7 +24,7 @@ public abstract class DriverFactory {
         proxy.setHttpProxy("proxy.net:3337");
         proxy.setSslProxy("proxy.net:3337");
 
-        if (System.getProperty("grid.address") != null && System.getProperty("grid.port") !=null) {
+        if (System.getProperty("grid.address") != null && System.getProperty("grid.port") != null) {
             URL gridUrl = null;
             try {
                 gridUrl = new URL("http://" + System.getProperty("grid.address") + ":" + System.getProperty("grid.port") + "/wd/hub");
